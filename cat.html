@@ -1,0 +1,190 @@
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>Application de Galerie photo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="cat.js"></script>
+
+    <style>
+      .thumbnaildiv {
+      display: inline-flex;
+      max-height: 85px;
+      max-width: 135px;
+      transform: skewY(10deg);
+      }
+
+      .thumbnaildiv:hover {
+      transform: rotateY(180deg);
+      cursor: pointer;
+      }
+      .thumbnailscontainer.col-xs-12 {
+      margin-top: 2em;
+      }
+      h1 {
+      text-align: center;
+      font-size: xxx-large;
+      font-weight: bold;
+      }
+      .slidecontainer {
+      width: max-content;
+      display: block;
+      margin: 0 2em 0 0;
+      position: relative;
+      }
+      .modalslide {
+      display: none;
+      }
+      row.buttons.row {
+      font-size: x-large;
+      margin: 0 auto;
+      }
+
+      row.modalbuttons.row {
+      bottom: 1em;
+      right: 7em;
+      font-size: 2.5em;
+      }
+
+
+      p.slidenumber.col-xs-6.col-xs-offset-1 {
+      position: relative;
+      top: 1em;
+      }
+      .modalslidenumber col-xs-6 col-xs-offset-1 {
+      position: relative;
+      top: 1.8em;
+      }
+      .previous.col-xs-2, .next.col-xs-2.col-xs-offset-1, a.modalprevious.col-xs-2, a.modalnext.col-xs-2.col-xs-offset-1 {
+      font-size: xxx-large;
+      }
+      img.slide {
+      max-width: 768px;
+      max-height: 384px;
+      overflow: hidden;
+      }
+      .currentslidenumber {
+      font-weight: bold;
+      }
+      .magnifier {
+      display: none;
+      position: absolute;
+      top: 0%;
+      left: 93%;
+      opacity: 0.7;
+      }
+  
+      /* The Modal (background) */
+      .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+      }
+
+
+      /* Caption of Modal Image (Image Text) - Same Width as the Image */
+      .captioncontainer {
+      margin: auto;
+      display: block;
+      width: 20%;
+      position: absolute;
+      top: 5em;
+      right: 5em;
+      }
+
+      .caption.row {
+      font-size: larger;
+      }
+
+      /* The Close Button */
+      .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #fff;
+      font-size: 60px;
+      font-weight: bold;
+      transition: 0.3s;
+      opacity: 1;
+      }
+
+      .close:hover,
+      .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+      }
+
+      /* 100% Image Width on Smaller Screens */
+      @media only screen and (min-width:320px) and (max-width:768px) {
+        .modal-content {
+          width: 100%;
+        }
+      }
+
+      @media only screen and (min-width:769px) and (max-width:980px) { 
+        /* CSS rules here */
+      }
+
+      @media only screen and (min-width:981px) and (max-width:1199px) { 
+        /* CSS rules here */
+      }
+
+      @media only screen and (min-width : 1200px) and (max-width: 2500px) {
+        .slidecontainer.col-xs-8 {
+        margin-left: 10%;
+        }
+        .captioncontainer{
+        margin-right: 10%;
+        font-size: larger;
+        right: 0em;
+
+        }
+        p.modalslidenumber.col-xs-6.col-xs-offset-1 {
+          position: relative;
+          top: 0em;
+        }
+        row.modalbuttons.row {
+          bottom: 1.2em;
+          right: 7em;
+        }
+        row.buttons.row {
+          font-size: xx-large;
+        }
+        p.slidenumber.col-xs-6.col-xs-offset-1 {
+          top: .5em;
+          position: relative;
+
+        }
+      }
+
+      @media only screen and (min-width : 2501px) {
+
+        row.modalbuttons.row {
+          right: 15em;
+          font-size: 3em;
+        }
+
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Album de chats</h1>
+    <div id="album">
+    </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- The Close Button -->
+      <span class="close">&times;</span>
+    </div>
+  </body>
+</html>
